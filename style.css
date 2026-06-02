@@ -62,8 +62,10 @@ a{ color:inherit; text-decoration:none; }
 .logo-text{ font-size: 16px; }
 
 .nav{ display:flex; align-items:center; gap: 14px; }
-.nav-menu{
-  list-style:none; display:flex; gap: 18px; align-items:center;
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 18px;
 }
 .nav-item{
   font-size: 14px; color: var(--muted);
@@ -74,18 +76,6 @@ a{ color:inherit; text-decoration:none; }
 .nav-item:hover{ color: var(--text); background: rgba(255,255,255,0.06); }
 .nav-item.active{ color: var(--text); background: rgba(124,58,237,0.18); border:1px solid rgba(124,58,237,.35); }
 
-.nav-trigger{
-  display:none;
-  width:42px; height:42px; border-radius:12px;
-  background: #fff;
-  border: 1px solid var(--stroke);
-  cursor:pointer;
-}
-.nav-toggle span{
-  display:block; height:2px; width:18px; margin:5px auto;
-  background: rgba(255,255,255,0.9);
-  border-radius:99px;
-}
 .header-cta{ display:inline-flex; }
 
 .hero-grid{
@@ -413,20 +403,63 @@ input:focus, textarea:focus{
   .header-cta{ display:none; }
 }
 
-@media (max-width: 760px){
-  .nav-trigger{ display:block; }
-  .nav-menu{
-    position:absolute;
-    right: 4%;
-    top: 64px;
-    width: min(320px, 92vw);
-    display:none;
-    flex-direction:column;
-    padding: 14px;
-    border-radius: 18px;
-    border: 1px solid rgba(255,255,255,0.14);
-    background: rgba(7,10,18,0.92);
-    backdrop-filter: blur(10px);
-  }
-  .nav-menu.open{ display:flex; }
+.login-section{
+  min-height: calc(100vh - 115px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.login-panel,
+.dashboard-card{
+  width: min(520px, 100%);
+  padding: 34px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: var(--shadow);
+}
+
+.login-panel h1{
+  font-size: clamp(30px, 4vw, 38px);
+  margin-bottom: 14px;
+}
+
+.login-field{
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.login-field label{
+  font-size: 13px;
+  color: rgba(255,255,255,0.72);
+}
+
+.login-field input{
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+}
+
+.login-error{
+  margin-top: 14px;
+  min-height: 1.3em;
+  color: #fda4af;
+  font-size: 14px;
+}
+
+.login-hint{
+  margin-top: 18px;
+  color: rgba(255,255,255,0.78);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.btn-block{
+  width: 100%;
 }

@@ -1,23 +1,4 @@
 // ================================
-// Mobile Navigation Toggle
-// ================================
-const navToggle = document.getElementById("navTrigger");
-const navMenu = document.getElementById("navMenu");
-
-if (navToggle && navMenu) {
-  navToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("open");
-  });
-}
-
-// Close menu when clicking a link (mobile)
-document.querySelectorAll(".nav-item").forEach(link => {
-  link.addEventListener("click", () => {
-    navMenu?.classList.remove("open");
-  });
-});
-
-// ================================
 // Reveal on Scroll Animation
 // ================================
 const reveals = document.querySelectorAll(".reveal");

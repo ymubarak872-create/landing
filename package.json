@@ -1,0 +1,12 @@
+{
+  "name": "novalaunch-site",
+  "version": "1.0.0",
+  "description": "NovaLaunch website with login backend for admin and user",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
