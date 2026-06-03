@@ -48,14 +48,28 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 });
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('menuToggleBtn');
-    const navMenu = document.getElementById('navMenu');
+// This setup ensures the script waits until the entire page is fully loaded
+function initializeNavToggle() {
+    const navToggleBtn = document.getElementById('navToggleBtn');
+    const navLinks = document.getElementById('navLinks');
 
-    if (toggleBtn && navMenu) {
-        toggleBtn.addEventListener('click', () => {
-            // Toggles the drop-down menu layer visibility on and off
-            navMenu.classList.toggle('is-open');
+    if (navToggleBtn && navLinks) {
+        // Remove any old click listeners first to avoid double-firing
+        navToggleBtn.removeAttribute('onclick'); 
+        
+        navToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navLinks.classList.toggle('mobile-active');
+            console.log("Menu toggle clicked! Active status:", navLinks.classList.contains('mobile-active'));
         });
+    } else {
+        console.log("Navbar elements not found on this specific page.");
     }
-});
+}
+
+// Run the function immediately when the DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeNavToggle);
+} else {
+    initializeNavToggle();
+}
