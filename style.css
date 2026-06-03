@@ -547,3 +547,32 @@ body.is-preloading{
 .btn-block{
   width: 100%;
 }
+/* Desktop view - hide toggle button */
+#menuToggleBtn {
+    display: none;
+}
+
+/* Mobile view - collapse menu and show toggle button */
+@media (max-width: 768px) {
+    #menuToggleBtn {
+        display: block !important; /* Show hamburger button */
+    }
+
+    .nav-menu {
+        display: none !important; /* Hide links by default on phone screens */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #111; /* Matches your dark design layout */
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 999;
+    }
+
+    /* Class added by JavaScript to display the dropdown links */
+    .nav-menu.is-open {
+        display: flex !important;
+    }
+}

@@ -48,3 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('menuToggleBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    if (toggleBtn && navMenu) {
+        toggleBtn.addEventListener('click', () => {
+            // Toggles the drop-down menu layer visibility on and off
+            navMenu.classList.toggle('is-open');
+        });
+    }
+});
