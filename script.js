@@ -48,26 +48,31 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 });
-// This setup ensures the script waits until the entire page is fully loaded
 function initializeNavToggle() {
-    const navToggleBtn = document.getElementById('navToggleBtn');
-    const navLinks = document.getElementById('navLinks');
+    // 1. Target the exact IDs from your HTML images
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const navMenu = document.getElementById('navMenu');
 
-    if (navToggleBtn && navLinks) {
-        // Remove any old click listeners first to avoid double-firing
-        navToggleBtn.removeAttribute('onclick'); 
-        
-        navToggleBtn.addEventListener('click', (e) => {
+    if (menuToggleBtn && navMenu) {
+        menuToggleBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            navLinks.classList.toggle('mobile-active');
-            console.log("Menu toggle clicked! Active status:", navLinks.classList.contains('mobile-active'));
+            
+            // 2. Toggle a clean inline style to force show/hide if the CSS class is missing
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.setProperty('display', 'none', 'important');
+            } else {
+                navMenu.style.setProperty('display', 'flex', 'important');
+                navMenu.style.flexDirection = 'column';
+            }
+            
+            console.log("Navbar toggle clicked successfully!");
         });
     } else {
-        console.log("Navbar elements not found on this specific page.");
+        console.log("Navbar elements not found. Check your HTML IDs.");
     }
 }
 
-// Run the function immediately when the DOM is ready
+// Run the script correctly regardless of load order
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeNavToggle);
 } else {
