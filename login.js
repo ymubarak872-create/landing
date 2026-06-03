@@ -18,9 +18,15 @@ if (loginForm) {
         body: JSON.stringify({ email, password })
       });
 
-      const result = await response.json();
-      if (!result.success) {
-        errorMessage.textContent = result.message || 'Login failed. Please try again.';
+      let result;
+      try {
+        result = await response.json();
+      } catch (parseError) {
+        throw new Error('Unexpected server response.');
+      }
+
+      if (!result?.success) {
+        errorMessage.textContent = result?.message || 'Login failed. Please try again.';
         return;
       }
 
