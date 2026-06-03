@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 function initializeNavToggle() {
-    // 1. Target the exact IDs from your HTML images
     const menuToggleBtn = document.getElementById('menuToggleBtn');
     const navMenu = document.getElementById('navMenu');
 
@@ -57,22 +56,17 @@ function initializeNavToggle() {
         menuToggleBtn.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // 2. Toggle a clean inline style to force show/hide if the CSS class is missing
-            if (navMenu.style.display === 'flex') {
-                navMenu.style.setProperty('display', 'none', 'important');
-            } else {
+            // Toggle menu visibility smoothly
+            if (window.getComputedStyle(navMenu).display === 'none') {
                 navMenu.style.setProperty('display', 'flex', 'important');
                 navMenu.style.flexDirection = 'column';
+            } else {
+                navMenu.style.setProperty('display', 'none', 'important');
             }
-            
-            console.log("Navbar toggle clicked successfully!");
         });
-    } else {
-        console.log("Navbar elements not found. Check your HTML IDs.");
     }
 }
 
-// Run the script correctly regardless of load order
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeNavToggle);
 } else {
