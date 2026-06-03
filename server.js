@@ -80,11 +80,18 @@ app.get('/admin-dashboard.html', requireAuth('admin'), (req, res) => {
 app.get('/user-dashboard.html', requireAuth('user'), (req, res) => {
   res.sendFile(path.join(__dirname, 'user-dashboard.html'));
 });
-// Automatically send visitors to the login page when they open the main website URL
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'login.html'));
-});
+// Serve static files from the root directory
 app.use(express.static(path.join(__dirname)));
+
+// Root route: Show the landing page (index.html) with its styles
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`NovaLaunch backend running on port ${PORT}`);
+});
 
 app.listen(PORT, () => {
   console.log(`NovaLaunch backend running on http://localhost:${PORT}`);
