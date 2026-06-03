@@ -80,7 +80,10 @@ app.get('/admin-dashboard.html', requireAuth('admin'), (req, res) => {
 app.get('/user-dashboard.html', requireAuth('user'), (req, res) => {
   res.sendFile(path.join(__dirname, 'user-dashboard.html'));
 });
-
+// Automatically send visitors to the login page when they open the main website URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'login.html'));
+});
 app.use(express.static(path.join(__dirname)));
 
 app.listen(PORT, () => {
